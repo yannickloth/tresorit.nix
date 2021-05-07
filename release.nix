@@ -6,6 +6,7 @@ let
   run-tresorit-install-script = writeShellScriptBin "install-tresorit-impure" ''
     mkdir -p $HOME/.local/tresorit
     cp -rf ${pure}/bin/* $HOME/.local/tresorit/
+    chmod -R +w $HOME/.local/tresorit/fonts
   '';
   run-tresorit-script = writeShellScriptBin "tresorit-impure" ''
     BIN=$HOME/.local/tresorit/tresorit
