@@ -39,3 +39,18 @@ tresorit-impure
 # or
 tresorit-cli-impure
 ```
+
+# Build
+
+``` shell
+nix-build
+```
+
+
+# Uninstall
+
+``` shell
+nix-env -e tresorit
+nix-env -e tresorit-impure
+rm -Rf ~/.local/tresorit
+```
