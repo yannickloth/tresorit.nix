@@ -24,7 +24,8 @@ stdenv.mkDerivation rec {
   dontMake = true;
 
   unpackPhase  = ''
-    tail -n+94 $src | tar xz -C $TMP
+    export `grep -a SKIP $src | head -n 1`
+    tail -n+$SKIP $src | tar xz -C $TMP
   '';
 
   installPhase = ''
