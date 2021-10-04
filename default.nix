@@ -4,12 +4,12 @@ with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
 
-  version = "3.5.871.1720";
+  version = "3.5.938.2150";
   name = "tresorit-${version}";
 
   src = fetchurl {
     url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
-    sha256 = "be118019401ca43bfd28e4141bda533b87af92b46c324ac9cec643894717ef97";
+    sha256 = "0m83zb59v1fkyrc9lkyggiifcrh5mfxg579bk8512szypn7m83mp";
   };
 
   runtimeDependencies = [ fuse ];
@@ -24,7 +24,8 @@ stdenv.mkDerivation rec {
   dontMake = true;
 
   unpackPhase  = ''
-    tail -n+94 $src | tar xz -C $TMP
+    export `grep -a SKIP $src | head -n 1`
+    tail -n+$SKIP $src | tar xz -C $TMP
   '';
 
   installPhase = ''
